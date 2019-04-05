@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import ServerApi from "../../serverApi/server-api";
 import RandomPlanet from "../random-planet/";
-import OnePageList from "../one-page-list/";
-import OnePageInfo from "../one-page-info";
+import ElementsList from "../elements-list/";
+import ElementsInfo from "../elements-info";
 
 import "./app.css";
 
 export default class App extends Component {
-    requestServer = new ServerApi();
+    ServerApi = new ServerApi();
 
     state = {
         selectedId: null
@@ -21,12 +21,12 @@ export default class App extends Component {
         return (
             <div className="app">
                 <RandomPlanet />
-                <OnePageList
-                    dataToShow={this.requestServer.getPlanetsList}
+                <ElementsList
+                    dataToShow={this.ServerApi.getPlanetsList}
                     generateItem={this.handleID}
                 />
-                <OnePageInfo
-                    dataToShow={this.requestServer.getPlanetsList}
+                <ElementsInfo
+                    dataToShow={this.ServerApi.getPlanetsList}
                     selectedId={this.state.selectedId}
                 />
             </div>

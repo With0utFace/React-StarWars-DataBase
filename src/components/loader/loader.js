@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import "./loading-spin.css";
+import "./loader.css";
 
-export default class LoadingSping extends Component {
+export default class Loader extends Component {
     render() {
         return (
             <div className="lds-css ng-scope">

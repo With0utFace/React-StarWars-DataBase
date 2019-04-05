@@ -1,6 +1,12 @@
 export default class ServerApi {
     _baseApiURL = "https://swapi.co/api";
 
+    generateID = element => {
+        const idRegExp = /\/([0-9]*)\/$/;
+        const id = element.url.match(idRegExp)[1];
+        return id;
+    };
+
     makeRequest = async url => {
         const serverResponse = await fetch(`${this._baseApiURL}${url}`);
         return await serverResponse.json();
@@ -37,10 +43,8 @@ export default class ServerApi {
     };
 
     _refactorDataPerson = person => {
-        const idRegExp = /\/([0-9]*)\/$/;
-        const id = person.url.match(idRegExp)[1];
         return {
-            id: id,
+            id: this.generateID(person),
             name: person.name,
             gender: person.gender,
             birthYear: person.birth_year,
@@ -50,10 +54,8 @@ export default class ServerApi {
     };
 
     _refactorDataPlanets = planet => {
-        const idRegExp = /\/([0-9]*)\/$/;
-        const id = planet.url.match(idRegExp)[1];
         return {
-            id: id,
+            id: this.generateID(planet),
             name: planet.name,
             climate: planet.climate,
             diameter: planet.diameter,
@@ -64,10 +66,8 @@ export default class ServerApi {
     };
 
     _refactorDataStarships = starship => {
-        const idRegExp = /\/([0-9]*)\/$/;
-        const id = starship.url.match(idRegExp)[1];
         return {
-            id: id,
+            id: this.generateID(starship),
             price: starship.cost_in_credits,
             length: starship.length,
             model: starship.model,

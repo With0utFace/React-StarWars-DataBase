@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import ServerApi from "../../serverApi/server-api";
-import LoadgingSpin from "../loading-spin/";
+import Loader from "../loader/";
 
 import "./random-planet.css";
 
 export default class RandomPlanet extends Component {
-    requestServer = new ServerApi();
+    ServerApi = new ServerApi();
 
     state = {
         planet: {},
@@ -32,12 +32,12 @@ export default class RandomPlanet extends Component {
 
     updatePlanet() {
         const id = Math.floor(Math.random() * 11) + 2;
-        this.requestServer.getOnePlanet(id).then(this.onPlanetLoad);
+        this.ServerApi.getOnePlanet(id).then(this.onPlanetLoad);
     }
 
     render() {
         const loading = this.state.loadingData ? (
-            <LoadgingSpin />
+            <Loader />
         ) : (
             <PlanetInfo planet={this.state.planet} />
         );

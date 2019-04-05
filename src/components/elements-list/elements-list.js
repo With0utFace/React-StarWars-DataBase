@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import ServerApi from "../../serverApi/server-api";
-import LoadgingSpin from "../loading-spin/";
+import Loader from "../loader/";
 
-import "./one-page-list.css";
+import "./elements-list.css";
 
-export default class OnePageList extends Component {
-    requestServer = new ServerApi();
-
+export default class ElementsList extends Component {
     state = {
         people: {},
         loadingData: true
@@ -31,7 +28,7 @@ export default class OnePageList extends Component {
         const { generateItem } = this.props;
 
         const loading = loadingData ? (
-            <LoadgingSpin />
+            <Loader />
         ) : (
             <PeopleList people={people} throwID={generateItem} />
         );

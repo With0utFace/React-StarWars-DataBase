@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import LoadgingSpin from "../loading-spin/";
+import Loader from "../loader/";
 import ServerApi from "../../serverApi/server-api";
 
-import "./one-page-info.css";
+import "./elements-info.css";
 
-export default class OnePageInfo extends Component {
-    makeRequest = new ServerApi();
+export default class ElementsInfo extends Component {
+    ServerApi = new ServerApi();
 
     state = {
         selectedItem: null,
@@ -29,7 +29,7 @@ export default class OnePageInfo extends Component {
             return;
         }
 
-        this.makeRequest.getOnePlanet(selectedId).then(element => {
+        this.ServerApi.getOnePlanet(selectedId).then(element => {
             this.setState({ selectedItem: element, loadingData: false });
         });
     }
@@ -45,7 +45,7 @@ export default class OnePageInfo extends Component {
         const { loadingData } = this.state;
 
         const loadedComp = loadingData ? (
-            <LoadgingSpin />
+            <Loader />
         ) : (
             <ElementInfo selectedItem={this.state.selectedItem} />
         );
