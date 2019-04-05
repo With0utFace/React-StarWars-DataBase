@@ -1,42 +1,42 @@
 export default class ServerApi {
     _baseApiURL = "https://swapi.co/api";
 
-    async makeRequest(url) {
+    makeRequest = async url => {
         const serverResponse = await fetch(`${this._baseApiURL}${url}`);
         return await serverResponse.json();
-    }
+    };
 
-    async getPeopleList() {
+    getPeopleList = async () => {
         const result = await this.makeRequest(`/people/`);
         return result.results.map(this._refactorDataPerson);
-    }
+    };
 
-    async getOnePerson(id) {
+    getOnePerson = async id => {
         const person = await this.makeRequest(`/people/${id}/`);
         return this._refactorDataPerson(person);
-    }
+    };
 
-    async getPlanetsList() {
+    getPlanetsList = async () => {
         const result = await this.makeRequest(`/planets/`);
         return result.results.map(this._refactorDataPlanets);
-    }
+    };
 
-    async getOnePlanet(id) {
+    getOnePlanet = async id => {
         const planet = await this.makeRequest(`/planets/${id}/`);
         return this._refactorDataPlanets(planet);
-    }
+    };
 
-    async getStarshipsList() {
+    getStarshipsList = async () => {
         const result = await this.makeRequest(`/starships/`);
         return result.results.map(this._refactorDataStarships);
-    }
+    };
 
-    async getOneStarship(id) {
+    getOneStarship = async id => {
         const ship = await this.makeRequest(`/starships/${id}/`);
         return this._refactorDataStarships(ship);
-    }
+    };
 
-    _refactorDataPerson(person) {
+    _refactorDataPerson = person => {
         const idRegExp = /\/([0-9]*)\/$/;
         const id = person.url.match(idRegExp)[1];
         return {
@@ -45,12 +45,11 @@ export default class ServerApi {
             gender: person.gender,
             birthYear: person.birth_year,
             skinColor: person.skin_color,
-            films: person.films,
             height: person.height
         };
-    }
+    };
 
-    _refactorDataPlanets(planet) {
+    _refactorDataPlanets = planet => {
         const idRegExp = /\/([0-9]*)\/$/;
         const id = planet.url.match(idRegExp)[1];
         return {
@@ -62,9 +61,9 @@ export default class ServerApi {
             rotationPeriod: planet.rotation_period,
             terrain: planet.terrain
         };
-    }
+    };
 
-    _refactorDataStarships(starship) {
+    _refactorDataStarships = starship => {
         const idRegExp = /\/([0-9]*)\/$/;
         const id = starship.url.match(idRegExp)[1];
         return {
@@ -78,5 +77,5 @@ export default class ServerApi {
             shipClass: starship.starship_class,
             url: starship.url
         };
-    }
+    };
 }

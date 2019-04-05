@@ -1,0 +1,37 @@
+.one-page-wrapper {
+    width: 45%;
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #424242;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.one-page-list {
+    margin: 0;
+    padding: 0;
+    font-family: "Mukta";
+    color: #e0e0e0;
+    list-style: none;
+    width: 100%;
+    font-size: 20px;
+}
+
+.one-page-list li {
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    line-height: 1;
+    padding: 15px;
+    transition: 0.4s;
+}
+
+.one-page-list li:hover {
+    background-color: #757575;
+}
+
+.one-page-list li:not(:last-child) {
+    border-bottom: 1px solid #e0e0e0;
+}

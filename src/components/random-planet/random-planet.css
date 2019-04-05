@@ -1,0 +1,39 @@
+.random-planet-wrapper {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #424242;
+    padding: 15px;
+    border-radius: 10px;
+    min-height: 251px;
+    width: 100%;
+}
+.random-planet {
+    margin: 0;
+    padding: 0;
+    font-family: "Mukta";
+    color: #e0e0e0;
+    list-style: none;
+}
+.random-planet li {
+    display: block;
+    line-height: 1;
+    padding: 10px 0;
+    min-width: 350px;
+}
+
+.random-planet li:not(:last-child) {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.planet-image {
+    width: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-right: 15px;
+}
+.planet-image img {
+    width: 100%;
+    max-width: 100%;
+}
