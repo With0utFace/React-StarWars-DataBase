@@ -56,3 +56,15 @@
     border-radius: 10px;
     width: 100%;
 }
+
+@media (max-width: 800px) {
+    .info-wrapper {
+        width: 100%;
+    }
+    .info-list {
+        margin-left: 0;
+    }
+    .info-image {
+        width: 100%;
+    }
+}

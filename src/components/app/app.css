@@ -37,3 +37,15 @@ img {
     width: 100%;
     text-align: center;
 }
+
+@media (max-width: 500px) {
+    .detail-name {
+        font-size: 1.3rem;
+    }
+    .info-list {
+        font-size: 20px;
+    }
+    .item-name {
+        font-size: 35px;
+    }
+}

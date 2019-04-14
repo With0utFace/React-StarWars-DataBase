@@ -38,3 +38,36 @@
     color: #ff6f00;
     background-color: transparent;
 }
+
+@media (max-width: 800px) {
+    .header-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+    .header-links .page-title {
+        width: 100%;
+        margin: 0 0 30px 0 !important;
+        text-align: center;
+    }
+    .header-links .page-title a {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .header-links {
+        justify-content: space-between;
+    }
+    .header-links li {
+        margin: 0 !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .header-links li {
+        font-size: 12px;
+    }
+}

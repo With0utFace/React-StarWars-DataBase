@@ -56,3 +56,9 @@
 .one-element-list li:hover {
     background-color: #757575;
 }
+
+@media (max-width: 800px) {
+    .one-element-list li {
+        width: calc(50% - 20px);
+    }
+}

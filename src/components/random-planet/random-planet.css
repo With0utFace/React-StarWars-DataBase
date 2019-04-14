@@ -37,3 +37,24 @@
     width: 100%;
     max-width: 100%;
 }
+
+@media (max-width: 650px) {
+    .random-planet-wrapper {
+        flex-wrap: wrap;
+    }
+    .random-planet {
+        width: 100%;
+        margin-top: 30px;
+    }
+    .random-planet li {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .planet-image {
+        width: 100%;
+        margin: 0;
+    }
+}
