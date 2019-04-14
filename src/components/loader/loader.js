@@ -1,18 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 
 import "./loader.css";
 
-export default class Loader extends Component {
-    render() {
-        return (
-            <div className="lds-css ng-scope">
-                <div className="lds-disk">
-                    <div>
-                        <div />
-                        <div />
-                    </div>
-                </div>
+const Loader = () => (
+    <div className="lds-css ng-scope">
+        <div className="lds-disk">
+            <div>
+                <div />
+                <div />
             </div>
-        );
-    }
-}
+        </div>
+    </div>
+);
+
+export default Loader;

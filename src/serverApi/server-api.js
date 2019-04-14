@@ -1,5 +1,6 @@
 export default class ServerApi {
     _baseApiURL = "https://swapi.co/api";
+    _baseImageUrl = "https://starwars-visualguide.com/assets/img";
 
     generateID = element => {
         const idRegExp = /\/([0-9]*)\/$/;
@@ -12,39 +13,72 @@ export default class ServerApi {
         return await serverResponse.json();
     };
 
-    getPeopleList = async () => {
-        const result = await this.makeRequest(`/people/`);
-        return result.results.map(this._refactorDataPerson);
-    };
+    get = async (element, id = "") => {
+        let current = null;
+        let refactorCurrent = null;
 
-    getOnePerson = async id => {
-        const person = await this.makeRequest(`/people/${id}/`);
-        return this._refactorDataPerson(person);
-    };
+        switch (element) {
+            case "peoples":
+                current = "/people/";
+                refactorCurrent = this._refactorDataPerson;
+                break;
 
-    getPlanetsList = async () => {
-        const result = await this.makeRequest(`/planets/`);
-        return result.results.map(this._refactorDataPlanets);
-    };
+            case "planets":
+                current = "/planets/";
+                refactorCurrent = this._refactorDataPlanets;
+                break;
 
-    getOnePlanet = async id => {
-        const planet = await this.makeRequest(`/planets/${id}/`);
-        return this._refactorDataPlanets(planet);
-    };
+            case "starships":
+                current = "/starships/";
+                refactorCurrent = this._refactorDataStarships;
+                break;
 
-    getStarshipsList = async () => {
-        const result = await this.makeRequest(`/starships/`);
-        return result.results.map(this._refactorDataStarships);
-    };
+            case "vehicles":
+                current = "/vehicles/";
+                refactorCurrent = this._refactorDataVehicles;
+                break;
 
-    getOneStarship = async id => {
-        const ship = await this.makeRequest(`/starships/${id}/`);
-        return this._refactorDataStarships(ship);
+            case "person":
+                current = `/people/${id}`;
+                refactorCurrent = this._refactorDataPerson;
+                break;
+
+            case "planet":
+                current = `/planets/${id}`;
+                refactorCurrent = this._refactorDataPlanets;
+                break;
+
+            case "starship":
+                current = `/starships/${id}`;
+                refactorCurrent = this._refactorDataStarships;
+                break;
+
+            case "vehicle":
+                current = `/vehicles/${id}`;
+                refactorCurrent = this._refactorDataVehicles;
+                break;
+
+            default:
+                current = "";
+                break;
+        }
+
+        const result = await this.makeRequest(current);
+
+        const ObjectToShow =
+            id === ""
+                ? result.results.map(refactorCurrent)
+                : refactorCurrent(result);
+
+        return ObjectToShow;
     };
 
     _refactorDataPerson = person => {
         return {
             id: this.generateID(person),
+            image: `${this._baseImageUrl}/characters/${this.generateID(
+                person
+            )}.jpg`,
             name: person.name,
             gender: person.gender,
             birthYear: person.birth_year,
@@ -56,6 +90,9 @@ export default class ServerApi {
     _refactorDataPlanets = planet => {
         return {
             id: this.generateID(planet),
+            image: `${this._baseImageUrl}/planets/${this.generateID(
+                planet
+            )}.jpg`,
             name: planet.name,
             climate: planet.climate,
             diameter: planet.diameter,
@@ -68,6 +105,9 @@ export default class ServerApi {
     _refactorDataStarships = starship => {
         return {
             id: this.generateID(starship),
+            image: `${this._baseImageUrl}/starships/${this.generateID(
+                starship
+            )}.jpg`,
             price: starship.cost_in_credits,
             length: starship.length,
             model: starship.model,
@@ -76,6 +116,22 @@ export default class ServerApi {
             manufacturer: starship.manufacturer,
             shipClass: starship.starship_class,
             url: starship.url
+        };
+    };
+
+    _refactorDataVehicles = vehicle => {
+        return {
+            id: this.generateID(vehicle),
+            image: `${this._baseImageUrl}/vehicles/${this.generateID(
+                vehicle
+            )}.jpg`,
+            name: vehicle.name,
+            price: vehicle.cost_in_credits,
+            length: vehicle.length,
+            model: vehicle.model,
+            maxSpeed: vehicle.max_atmosphering_speed,
+            capacity: vehicle.cargo_capacity,
+            url: vehicle.url
         };
     };
 }

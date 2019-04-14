@@ -20,3 +20,20 @@ body {
 img {
     vertical-align: middle;
 }
+
+.detail-name {
+    font-size: 1.7rem;
+    margin-right: 10px;
+    color: #eacc2e;
+}
+
+.detail-name:after {
+    content: ":";
+    margin-left: 3px;
+}
+
+.list-wrapper {
+    display: flex;
+    width: 100%;
+    text-align: center;
+}

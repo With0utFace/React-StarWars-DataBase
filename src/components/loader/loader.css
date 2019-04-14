@@ -30,7 +30,7 @@
     width: 140px;
     height: 140px;
     border-radius: 50%;
-    background: #212121;
+    background: #e0e0e0;
 }
 .lds-disk > div div:nth-child(2) {
     position: absolute;
@@ -39,7 +39,7 @@
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: #e0e0e0;
+    background: #212121;
     -webkit-animation: lds-disk 1.1s linear infinite;
     animation: lds-disk 1.1s linear infinite;
     -webkit-transform-origin: 21px 60.199999999999996px;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ServerApi from "../../serverApi/server-api";
-import Loader from "../loader/";
+import Loader from "../loader/loader";
 
 import "./random-planet.css";
 
@@ -32,7 +32,7 @@ export default class RandomPlanet extends Component {
 
     updatePlanet() {
         const id = Math.floor(Math.random() * 11) + 2;
-        this.ServerApi.getOnePlanet(id).then(this.onPlanetLoad);
+        this.ServerApi.get("planet", id).then(this.onPlanetLoad);
     }
 
     render() {
@@ -47,8 +47,8 @@ export default class RandomPlanet extends Component {
 
 const PlanetInfo = ({ planet }) => {
     const {
-        id,
         name,
+        image,
         climate,
         diameter,
         population,
@@ -58,10 +58,7 @@ const PlanetInfo = ({ planet }) => {
     return (
         <React.Fragment>
             <div className="planet-image">
-                <img
-                    src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-                    alt="planet"
-                />
+                <img src={image} alt="planet" />
             </div>
             <ul className="random-planet">
                 <li>Name: {name}</li>
