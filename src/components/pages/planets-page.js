@@ -1,21 +1,4 @@
-import React, { Component } from "react";
-
 import { PlanetsList } from "../swdb-components/elements-lists";
+import WithID from "../hoc/withID";
 
-export default class PeoplePage extends Component {
-    state = {
-        selectedItem: null
-    };
-
-    setID = id => {
-        this.setState({ selectedItem: id });
-    };
-
-    render() {
-        return (
-            <div className="list-wrapper">
-                <PlanetsList clicked={this.setID} />
-            </div>
-        );
-    }
-}
+export default WithID(PlanetsList);
