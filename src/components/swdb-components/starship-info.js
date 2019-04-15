@@ -8,7 +8,6 @@ const StarshipDetails = props => {
             <Data field="price" label="Price" />
             <Data field="length" label="Length" />
             <Data field="model" label="Model" />
-            <Data field="pilots" label="Pilots" />
             <Data field="manufacturer" label="Manufacturer" />
             <Data field="shipClass" label="Class" />
         </ElementsInfo>
